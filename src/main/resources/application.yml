@@ -1,5 +1,27 @@
 spring:
   application:
     name: user-server
+  datasource:
+    url: jdbc:postgresql://localhost:5432/db
+    username: user
+    password: password
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: none
+    show-sql: true
+  flyway:
+    enabled: true
+    url: jdbc:postgresql://localhost:5432/db
+    user: user
+    password: password
+    locations: classpath:db/migration
+    schemas:
+      - flyway_history_schema
+      - project_data
+    default-schema: flyway_history_schema
+    create-schemas: true
+    group: true
+    baseline-on-migrate: true
 server:
   port: 8081
